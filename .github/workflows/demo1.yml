@@ -4,7 +4,22 @@ on:
   pull_request:
     types:
       - opened
+    branches:
+      - main
+      - dev-* # dev-new dev-this-is-new
+      - feat/** # feat/new feat/new/button
+
   workflow_dispatch:
+
+  push:
+    branches:
+      - main
+      - dev-* # dev-new dev-this-is-new
+      - feat/** # feat/new feat/new/button
+      # *: one start means nested "/" will not work
+      # **: two start means nested "/" will work
+    paths-ignore:
+      - .github/workflows/*
 
 jobs:
   deploy:
